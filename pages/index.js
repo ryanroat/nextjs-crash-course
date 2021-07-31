@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import ArticleList from '../components/ArticleList';
-import Image from 'next/image'
 
 export default function Home({ articles }) {
   // console.log(articles);
