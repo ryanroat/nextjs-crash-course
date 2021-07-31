@@ -1,7 +1,9 @@
 import Head from 'next/head'
+import ArticleList from '../components/ArticleList';
 import Image from 'next/image'
 
-export default function Home() {
+export default function Home({ articles }) {
+  // console.log(articles);
   return (
     <div>
       <Head>
@@ -9,7 +11,24 @@ export default function Home() {
         <meta name='description' content='Recent web development news.'/>
         <meta name="author" content="Ryan Roat"/>
       </Head>
-      <h1>Boo!</h1>
+
+      {/* render list of retrieved articles */}
+      <ArticleList articles={articles}/>
+
     </div>
   )
 }
+
+// functions for data retrieval
+
+export const getStaticProps = async () => {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=6`)
+  const articles = await res.json()
+
+  return {
+    props: {
+      articles
+    }
+  }
+}
+
