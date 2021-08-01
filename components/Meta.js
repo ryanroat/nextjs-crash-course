@@ -4,8 +4,7 @@ const Meta = ({title, keywords, description, author}) => {
   return (
     <Head>
       <meta name='viewport' content='width=device-width, initial-scale=1'/>
-      {/* TODO: check if keywords otherwise omit */}
-      <meta name='keywords' content={keywords}/>
+      {keywords && <meta name='keywords' content={keywords}/>}
       <meta name='author' content={author}/>
       <meta name='description' content={description}/>
       <meta charSet='utf-8'/>
